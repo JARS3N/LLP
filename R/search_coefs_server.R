@@ -9,8 +9,10 @@ shinyServer(function(input, output, session) {
   
   
   observeEvent(input$Lot, {
+    print(inout$Lot)
     if (input$Lot != 'N/A')
       BMID <- lotstuff$BMID[lotstuff$LotNumber == input$Lot]
+    print(BMID)
     info <- LiveLongAndProsper::get_coefs(BMID)
     
     output$Lottable <- renderTable(data.frame(Lot = input$Lot))
