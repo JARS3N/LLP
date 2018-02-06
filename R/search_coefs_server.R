@@ -2,7 +2,7 @@ search_coefs_server <- function() {
 
 require(shiny)
 require(dplyr)
-lotstuff <- coef_lots()
+lotstuff <- LiveLongAndProsper::coef_lots()
 
 shinyServer(function(input, output, session) {
   updateSelectInput(session, 'Lot', choices = lotstuff$Lot)
