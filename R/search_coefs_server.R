@@ -11,7 +11,7 @@ shinyServer(function(input, output, session) {
   observeEvent(input$Lot, {
     if (input$Lot != 'N/A')
       BMID <- lotstuff$BMID[lotstuff$LotNumber == input$Lot]
-    info <- get_coefs(BMID)
+    info <- LiveLongAndProsper::get_coefs(BMID)
     
     output$Lottable <- renderTable(data.frame(Lot = input$Lot))
     output$oxtable <- renderTable(select(info, contains('PH')) %>%
