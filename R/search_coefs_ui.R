@@ -8,7 +8,7 @@ search_coefs_ui <- function() {
       selectInput(
         "Lot",
         "Select Lot",
-        c('N/A'),
+        c('C000000'),
         selected = FALSE,
         multiple = FALSE
       ),
