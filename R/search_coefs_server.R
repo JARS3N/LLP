@@ -9,7 +9,7 @@ shinyServer(function(input, output, session) {
   
   
   observeEvent(input$Lot, {
-    print(inout$Lot)
+    print(input$Lot)
     if (input$Lot != 'N/A')
       BMID <- lotstuff$BMID[lotstuff$LotNumber == input$Lot]
     print(BMID)
