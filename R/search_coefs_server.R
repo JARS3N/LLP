@@ -1,7 +1,7 @@
 search_coefs_server <- function() {
 
-library(shiny)
-
+require(shiny)
+require(dplyr)
 lotstuff <- coef_lots()
 
 shinyServer(function(input, output, session) {
