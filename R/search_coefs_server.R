@@ -1,4 +1,4 @@
-search_coefs_server <- function() {
+search_coefs_server <- function(session) {
 
 library(shiny)
 
