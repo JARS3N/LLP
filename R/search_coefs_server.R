@@ -21,13 +21,11 @@ shinyServer(function(input, output, session) {
     output$pHtable <- renderTable(select(info, contains('O2')) %>%
                                     mutate(O2_A = as.character(round(O2_A, 0))),
                                   digits = 6)
-    print(info$BF)
-    print(str(info$BF))
-    print(info$BF==0)
+   
     if(info$BF==0){
-       output$bftbl <<-  renderTable(data.frame( Cartridge_BufferFactor =  "NA"))
+       output$bftbl <-  renderTable(data.frame( Cartridge_BufferFactor =  0),digits=0)
       }else{
-    output$bftbl <<-
+    output$bftbl <-
       renderTable(select(info, Cartridge_BufferFactor =  BF), digits = 6)
       }
   })
