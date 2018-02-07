@@ -4,11 +4,11 @@ dryqc_server <- function() {
   require(ggthemes)
   
   shinyServer(function(input, output, session) {
-    updateSelectInput(session, 'Lot', choices = get_dqc_lots())
+    updateSelectInput(session, 'Lot', choices = LLP::get_dqc_lots())
     
     
     observeEvent(input$Lot, {
-      DATA <- pull_dqc_data(input$Lot, input$analyte)
+      DATA <- LLP::pull_dqc_data(input$Lot, input$analyte)
       output$plot1 <- renderPlot({
         ggplot(DATA, aes(sn, var)) +
           geom_tufteboxplot(outlier.colour = "transparent") +
