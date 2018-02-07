@@ -21,7 +21,7 @@ shinyServer(function(input, output, session) {
     output$pHtable <- renderTable(select(info, contains('O2')) %>%
                                     mutate(O2_A = as.character(round(O2_A, 0))),
                                   digits = 6)
-    if(as.numeric(BF)<0.0001){
+    if(info$BF==0){
        output$bftbl <<- NULL
       }else{
     output$bftbl <<-
