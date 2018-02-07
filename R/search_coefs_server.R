@@ -2,7 +2,7 @@ search_coefs_server <- function() {
 
 require(shiny)
 require(dplyr)
-lotstuff <- LiveLongAndProsper::coef_lots()
+lotstuff <- LLP::coef_lots()
 
 shinyServer(function(input, output, session) {
   updateSelectInput(session, 'Lot', choices = lotstuff$Lot)
@@ -12,7 +12,7 @@ shinyServer(function(input, output, session) {
    # if (input$Lot != 'N/A')
       BMID <- lotstuff$BMID[lotstuff$LotNumber == input$Lot]
     print(BMID)
-    info <- LiveLongAndProsper::get_coefs(BMID)
+    info <- LLP::get_coefs(BMID)
     
     output$Lottable <- renderTable(data.frame(Lot = input$Lot))
     output$oxtable <- renderTable(select(info, contains('PH')) %>%
