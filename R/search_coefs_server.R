@@ -9,8 +9,7 @@ shinyServer(function(input, output, session) {
   
   
   observeEvent(input$Lot, {
-    print(input$Lot)
-    if (input$Lot != 'N/A')
+   # if (input$Lot != 'N/A')
       BMID <- lotstuff$BMID[lotstuff$LotNumber == input$Lot]
     print(BMID)
     info <- LiveLongAndProsper::get_coefs(BMID)
@@ -22,7 +21,7 @@ shinyServer(function(input, output, session) {
     output$pHtable <- renderTable(select(info, contains('O2')) %>%
                                     mutate(O2_A = as.character(round(O2_A, 0))),
                                   digits = 6)
-    if(BF==0){
+    if(BF<0.0001){
        output$bftbl <<- NULL
       B}else{
     output$bftbl <<-
