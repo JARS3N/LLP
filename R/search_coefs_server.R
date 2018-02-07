@@ -23,7 +23,7 @@ shinyServer(function(input, output, session) {
                                   digits = 6)
    
     if(info$BF==0){
-       output$bftbl <-  renderTable(data.frame( Cartridge_BufferFactor =  0),digits=0)
+       output$bftbl <-  renderTable(data.frame( Cartridge_BufferFactor =  NA),digits=0)
       }else{
     output$bftbl <-
       renderTable(select(info, Cartridge_BufferFactor =  BF), digits = 6)
