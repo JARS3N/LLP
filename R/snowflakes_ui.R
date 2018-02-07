@@ -1,4 +1,4 @@
-snowfalke_ui <- function() {
+snowflakes_ui <- function() {
   require(shiny)
   shinyUI(fluidPage(
     titlePanel("SnowFlake"),
