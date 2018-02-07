@@ -23,7 +23,7 @@ shinyServer(function(input, output, session) {
                                     mutate(O2_A = as.character(round(O2_A, 0))),
                                   digits = 6)
     output$bftbl <-
-      renderTable(select(info, Cartridge_BufferFactor =  as.character(BF)), digits = 6)
+      renderTable(select(info, Cartridge_BufferFactor =  BF), digits = 6)
   })
 })
 }
