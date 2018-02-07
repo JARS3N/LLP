@@ -23,7 +23,7 @@ shinyServer(function(input, output, session) {
                                   digits = 6)
     print(info$BF)
     print(str(info$BF))
-    print(info$BF==0))
+    print(info$BF==0)
     if(info$BF==0){
        output$bftbl <<- NULL
       }else{
