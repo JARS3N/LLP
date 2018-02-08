@@ -1,4 +1,4 @@
-int_qc_ol_server <- function() {
+inst_qc_ol_server <- function() {
   require(shiny)
   require(ggplot2)
   
