@@ -6,6 +6,6 @@
     fetch_query<-RMySQL::dbFetch(send_query,n=-1)
     RMySQL::dbClearResult(send_query)
     RMySQL::dbDisconnect(db)
-    fetch_query$use<-c("Production","Experimental")[as.numeric(factor(fetch_query$exp,levels=c(F,T)))]
+    fetch_query$use<-c("Production","Experimental")[as.numeric(factor(fetch_query$exp,levels=c(0,1)))]
     fetch_query
   }  
