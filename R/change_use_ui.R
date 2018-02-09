@@ -1,9 +1,7 @@
+
 change_use_ui<-function(){
-library(shiny)
-
+require(shiny)
 shinyUI(fluidPage(
-
-  # Application title
   titlePanel("Adjust Use Number"),
   sidebarLayout(
     sidebarPanel(
@@ -12,12 +10,9 @@ shinyUI(fluidPage(
                 accept = c(
                   "CartridgeBarcodes.XML",
                   ".XML")
-
       ),
       downloadButton('downloadData', 'Download')
     ),
-
-    # Show a plot of the generated distribution
     mainPanel(
       p('Upload file "CartridgeBarcodes.XML"'),
       p('File should be located @ C:\\ProgramData\\Seahorse Bioscience, Inc\\Seahorse Wave\\Data\\Cartridges'),
