@@ -10,4 +10,5 @@
    fetch_query$exp<-NULL
    fetch_query<-fetch_query[order(as.numeric(fetch_query$yr),fetch_query$day),]
    fetch_query$Lot<-factor(fetch_query$Lot,levels=unique(fetch_query$Lot))
+  fetch_query
   }  
