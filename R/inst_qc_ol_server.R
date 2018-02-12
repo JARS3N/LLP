@@ -9,7 +9,7 @@ inst_qc_ol_server <- function() {
              input$plat,
              'SELECT * FROM inst_qc_ol where platform= "%PLAT%";')
       send_query <- RMySQL::dbSendQuery(db, q)
-      data <- RMySQL::dbFetch(send_query)
+      data <- RMySQL::dbFetch(send_query,n=Inf)
       RMySQL::dbClearResult(send_query)
       RMySQL::dbDisconnect(db)
       
