@@ -5,7 +5,7 @@ pull_dqc_data<-function(Lot,var){
   q_3 <-'";'
   query_string<-paste0(q_1,var,q_2,Lot,q_3)
   send_query<-RMySQL::dbSendQuery(db,query_string)
-  fetch_query<-RMySQL::dbFetch(send_query,n=-1)
+  fetch_query<-RMySQL::dbFetch(send_query,n=Inf)
   RMySQL::dbClearResult(send_query)
   RMySQL::dbDisconnect(db)
   fetch_query
