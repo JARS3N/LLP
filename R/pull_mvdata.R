@@ -8,8 +8,6 @@
     RMySQL::dbDisconnect(db)
     fetch_query$use<-c("Production","Experimental")[as.numeric(factor(fetch_query$exp,levels=c(0,1)))]
    fetch_query$exp<-NULL
-   #fetch_query$yr<-as.numeric(yr)
-  #fetch_query<-arrange(fetch_query,yr,day)
-   #fetch_query$Lot<-factor(Lot,levels=unique(Lot))
-    fetch_query
+   fetch_query<-fetch_query[order(as.numeric(fetch_query$yr),fetch_query$day),]
+   fetch_query$Lot<-factor(fetch_query$Lot,levels=unique(fetch_query$Lot))
   }  
