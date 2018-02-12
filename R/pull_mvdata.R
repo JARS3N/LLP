@@ -10,6 +10,6 @@
    fetch_query$exp<-NULL
    #fetch_query$yr<-as.numeric(yr)
   #fetch_query<-arrange(fetch_query,yr,day)
-   fetch_query$Lot<-factor(Lot,levels=unique(Lot))
+   #fetch_query$Lot<-factor(Lot,levels=unique(Lot))
     fetch_query
   }  
