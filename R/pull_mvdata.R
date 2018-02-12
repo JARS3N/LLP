@@ -8,5 +8,6 @@
     RMySQL::dbDisconnect(db)
     fetch_query$use<-c("Production","Experimental")[as.numeric(factor(fetch_query$exp,levels=c(0,1)))]
    fetch_query$exp<-NULL
+   fetch_query$Lot<-factor(Lot,levels=unique(Lot))
     fetch_query
   }  
