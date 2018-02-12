@@ -5,7 +5,7 @@ inst_qc_ol_server <- function() {
   shinyServer(function(input, output, session) {
     observeEvent(input$plat, {
       db<-adminKraken::con_mysql()
-      q_str <-
+      q <-
         gsub("%PLAT%",
              input$plat,
              'SELECT * FROM inst_qc_ol where platform= "%PLAT%";')
