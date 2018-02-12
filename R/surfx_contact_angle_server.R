@@ -17,8 +17,9 @@ surfx_contact_angle_server <- function() {
     })
     
     observeEvent(c(input$SLIDE, input$cktest), {
-      X2 <- LLP::select_surfx_platform(input$Plat) %>%
-        filter(row_number() >= input$SLIDE[1] &
+      X2 <-
+        filter(LLP::select_surfx_platform(input$Plat),
+               row_number() >= input$SLIDE[1] &
                  row_number() <= input$SLIDE[2])
       
       X3 <-
@@ -30,7 +31,7 @@ surfx_contact_angle_server <- function() {
       if (input$cktest == FALSE) {
         PLOT_DATA <- inner_join(X4, X3, by = 'ID') %>%
           collect() %>%
-          arrange(., yr, day) %>%
+          arrange(., as.numeric(yr), day) %>%
           mutate(., CTG_LOT = factor(CTG_LOT, levels = unique(CTG_LOT)))
         
         PLOT <-  ggplot(PLOT_DATA, aes(CTG_LOT, ContactAngle)) +
@@ -48,7 +49,7 @@ surfx_contact_angle_server <- function() {
       } else{
         PLOT_DATA <- inner_join(X4, X3, by = 'ID') %>%
           collect() %>%
-          arrange(., yr, day) %>%
+          arrange(., as.numeric(yr), day) %>%
           mutate(., CTG_LOT = factor(CTG_LOT, levels = unique(CTG_LOT))) %>%
           group_by(CTG_LOT) %>%
           mutate(test = as.numeric(factor(BTCH_NO))) %>%
