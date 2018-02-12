@@ -6,7 +6,7 @@ send_query<-RMySQL::dbSendQuery(db,gsub("%type%",u,t2))
 fetch_query<-RMySQL::dbFetch(send_query)
 RMySQL::dbClearResult(send_query)
 RMySQL::dbDisconnect(db)
-fetch_query$CTG_LOT
+fetch_query
 }
 
         
