@@ -42,7 +42,7 @@ knitr::opts_chunk$set(echo = TRUE)
 + [Light Leak Control Chart](/jarsenault/lightLeakApp)   
     Light Leak data for instrument QC plotted in sequence by instrument
     
-### Other  
+### Other Tools  
 
 + [Process Outlier Data](/jarsenault/Outliers)  
     O2 Outlier analysis, only requires asyr files. Will return a zip file of data and plots  
