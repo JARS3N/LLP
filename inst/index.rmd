@@ -1,0 +1,52 @@
+---
+title: "Shiny Apps"
+date: "index updated: 2018-03-22"
+output:  
+  prettydoc::html_pretty:
+    theme: architect
+    highlight: github
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+ 
+
+### Cartridge QC  
++ [Dry QC Control Charts](/jarsenault/DRYQC)  
+    Tufte box plots of Cartridges in Dry QC by Lot  
++ [QC Notes](/jarsenault/QCNOTES)  
+    Add notes to the database about cartridge QC Lots  
++ [Spot Height Data entry](/jarsenault/SpotHeight)  
+    Form to enter spotheight data into the database  
++ [SURFX Data Entry](/jarsenault/SURFXentry)  
+    Entry form for surfx contact angle data from cartridge spotting  
++ [Surfx Contact Angle Control Charts](/jarsenault/SurfxContactAngle)  
+    Boxplot of Surfx contact angle data by platform ordered by Lot   
++ [Cartridge QC Control Charts](/jarsenault/XFeCC)  
+    Line plots with sd error bars of Cartridge QC data by platform and Instrument,ordered by Lot.  
++ [Cartridge QC Lot Data](/jarsenault/XFeCCLot)  
+    Boxplots of Cartridge QC Lot data, grouped and ordered by serial number    
++ [XFe Release Form](/jarsenault/XFeRelease)  
+    print out pdf summary of QC data for Lot release.  
++ [Machine Vision Lot View](/jarsenault/MVData)   
+    Machine Vision data Lots variables plotted in order of cartridge serial number   
++ [Machine Vision Control Chart](/jarsenault/MVplatformview)  
+    Machine Vision data plotted by platform in order of Lots    
+
+    
+### Instrument QC  
++ [Instrument QC O2 Outlier Control Chart](/jarsenault/InstQCOL)  
+    instrument QC outliers plotted in sequence by Lot  
++ [Light Leak Control Chart](/jarsenault/lightLeakApp)   
+    Light Leak data for instrument QC plotted in sequence by instrument
+    
+### Other  
+
++ [Process Outlier Data](/jarsenault/Outliers)  
+    O2 Outlier analysis, only requires asyr files. Will return a zip file of data and plots  
++ [Barcode Coefficient Look-up](/jarsenault/GetBarcodeCoefs)    
+    Retreive cartridge barcode coefficients by Lot,provided they exist in the database  
++ [snowflakes](/jarsenault/snowflakes)   
+    alters the latest version of the AKOS snowflake file for Wave  
