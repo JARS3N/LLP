@@ -9,7 +9,7 @@ shinyServer(function(input, output, session) {
   
   
   observeEvent(input$Lot, {
-   if (input$Lot != 'SELECT')
+   if (input$Lot != 'SELECT'){
       BMID <- lotstuff$BMID[lotstuff$LotNumber == input$Lot]
     print(BMID)
     info <- LLP::get_coefs(BMID)
