@@ -1,4 +1,4 @@
-eye_exam_server<-function(){
+eye_exam_ui<-function(){
 library(shiny)
 
 shinyServer(function(input, output) {
