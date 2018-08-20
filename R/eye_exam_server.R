@@ -1,5 +1,5 @@
 
-eye_exam_server<-function()(
+eye_exam_ui<-function(){
 
 library(shiny)
 
@@ -10,4 +10,4 @@ shinyUI(fluidPage(titlePanel("Can spock see?"),
                             )
                   )
         )
-)
+}
