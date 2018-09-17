@@ -1,4 +1,4 @@
-wetqc_lot_view<-function(){
+wetqc_lot_view_ui<-function(){
 require(shiny)
 require(plotly)
 shinyUI(fluidPage(
