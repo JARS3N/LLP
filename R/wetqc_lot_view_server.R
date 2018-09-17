@@ -1,5 +1,5 @@
 
-wetqc_lot_view<-function(){
+wetqc_lot_view_server<-function(){
 require(shiny)
 require(ggplot2)
 require(ggthemes)
