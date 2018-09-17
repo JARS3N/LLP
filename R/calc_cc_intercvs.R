@@ -6,7 +6,7 @@ substr(Lot,5,2) as yr,
 substr(Lot,2,3) as day
 from
 (select 100*(stddev(var)/AVG(var)) as CV,Lot,Well from
-    (SELECT Lot,Well,Inst,%VAR% as var from %TBL% where Inst=%INST%)as X
+    (SELECT Lot,Well,Inst,`%VAR%` as var from %TBL% where Inst=%INST%)as X
     group by Lot,Well) as Y
 group by Lot
 ORDER by yr DESC,day DESC;"
