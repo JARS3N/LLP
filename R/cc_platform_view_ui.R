@@ -1,4 +1,4 @@
-cc_platofrm_view_ui<-function(){
+cc_platform_view_ui<-function(){
 require(shiny)
 require(plotly)
 shinyUI(pageWithSidebar(
