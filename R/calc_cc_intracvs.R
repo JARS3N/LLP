@@ -4,7 +4,7 @@ str_0<-"SELECT AVG(CV)as intraCV,stddev(CV) as intraCVsd,substr(Lot,4,2) as yr,s
 (SELECT Lot,sn,Inst,`%VAR%` as var from xfpwetqc where Inst=430029) as x
 group by Lot,sn) as Y
 group by Lot
-ORDER by yr DESC,day DESC;"
+ORDER by yr ASC,day ASC;"
 
 
 query_string <- gsub("%INST%", inst, gsub("%TBL%", tbl, gsub("%VAR%" , var, str_0)))
