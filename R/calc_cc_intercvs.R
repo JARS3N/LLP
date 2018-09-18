@@ -9,7 +9,7 @@ from
     (SELECT Lot,Well,Inst,`%VAR%` as var from %TBL% where Inst=%INST%)as X
     group by Lot,Well) as Y
 group by Lot
-ORDER by yr DESC,day DESC;"
+ORDER by yr ASC,day ASC;"
 
 
 query_string <- gsub("%INST%", inst, gsub("%TBL%", tbl, gsub("%VAR%" , var, str_0)))
