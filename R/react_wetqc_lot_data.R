@@ -3,7 +3,7 @@ react_wetqc_lot_data<-function(platform,variable,inputLot,db){
                 platform, " where Lot=", shQuote(inputLot), 
                 " AND `",variable,"` IS NOT NULL;")
   q<-RMySQL::dbSendQuery(db,paste0(q_string,collapse=""))
-  a<-RMySQL::fetch(q)
+  a<-RMySQL::fetch(q,n=-1)
   RMySQL::dbClearResult(q)
   a$Inst<-factor(a$Inst)
   a
