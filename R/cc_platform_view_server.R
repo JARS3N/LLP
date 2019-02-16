@@ -25,10 +25,12 @@ shinyServer(function(input, output, session) {
             value = c(mx - 10, mx)
         )
     })
-    output$plot1 <- renderPlot({
-        selectedData <- reactive({
-            LLP::calc_cc_means(input$PLAT, input$Variable, input$INST, my_db)[input$SLIDE[1]:input$SLIDE[2], ]
-        })
+   output$plot1 <- renderPlot({
+      selectedData <- reactive({
+       df<- LLP::calc_cc_means(input$PLAT, input$Variable, input$INST, my_db)[input$SLIDE[1]:input$SLIDE[2], ] 
+        df$Lot<-factor(df$Lot,levels=df$Lot)
+        df
+      })
 
         ggplot(selectedData(), aes(x = Lot, y = avg)) +
             geom_line(stat = 'identity', aes(group = 1), alpha = .5) +
