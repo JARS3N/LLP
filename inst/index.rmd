@@ -52,5 +52,5 @@ Retreive cartridge barcode coefficients by Lot,provided they exist in the databa
 alters the latest version of the AKOS snowflake file for Wave  
 + [Anova-HSD](/jarsenault/anovaHSD)  
 ingests an xlsx file and runs anova and Tukey HSD on normailzed OCR rates for measure 3 using predefined groupings  
-+ [Spock Eye Exam](/jarsenault/eye_exam)
-can spock see the G-drive?
++ [Spock Eye Exam](/jarsenault/eye_exam)  
+can spock see the G-drive?  
