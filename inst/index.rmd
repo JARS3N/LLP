@@ -1,6 +1,6 @@
 ---
 title: "Shiny Apps"
-date: "index updated: 2018-03-22"
+date: "index updated: 2019-03-12"
 output:
   prettydoc::html_pretty:
     theme: architect
