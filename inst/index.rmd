@@ -20,6 +20,8 @@ Tufte box plots of Cartridges in Dry QC by Lot
 Add notes to the database about cartridge QC Lots  
 + [Spot Height Data entry](/jarsenault/SpotHeight)  
 Form to enter spotheight data into the database  
++ [Spot Height Plots](/jarsenault/spot_height_plot)  
+plots for spot height  
 + [SURFX Data Entry](/jarsenault/SURFXentry)  
 Entry form for surfx contact angle data from cartridge spotting  
 + [Surfx Contact Angle Control Charts](/jarsenault/SurfxContactAngle)  
