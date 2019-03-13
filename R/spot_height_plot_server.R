@@ -7,7 +7,7 @@ require(dplyr)
 shinyServer(function(input, output, session) {
   label <- c("pHeight" = 'pH', "oHeight" = "O2")
   db <- adminKraken::con_dplyr()
-  X <- db %>%  tbl(tbll) %>% collect() %>%
+  X <- db %>%  tbl("xf24spotheight") %>% collect() %>%
     mutate(., year = sapply(Date, function(u) {
       as.numeric(strsplit(u, split = "-")[[1]][1])
     }))
