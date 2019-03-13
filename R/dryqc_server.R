@@ -3,7 +3,7 @@ dryqc_server <- function() {
   require(ggplot2)
   require(ggthemes)
   shinyServer(function(input, output, session) {
-    updateSelectInput(session, 'Lot', choices = rev(LLP::get_dqc_lots()))
+    updateSelectInput(session, 'Lot', choices = LLP::get_dqc_lots())
     observeEvent(input$Lot, {
       DATA <- LLP::pull_dqc_data(input$Lot, input$analyte)
       output$plot1 <- renderPlot({
