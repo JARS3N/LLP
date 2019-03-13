@@ -5,5 +5,5 @@ get_dqc_lots<-function(){
   fetch_query<-RMySQL::dbFetch(send_query,n=Inf)
   RMySQL::dbClearResult(send_query)
   RMySQL::dbDisconnect(db)
-  fetch_query
+  rev(fetch_query$Lot)
 }
