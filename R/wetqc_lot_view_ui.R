@@ -8,12 +8,12 @@ shinyUI(fluidPage(
         selectInput(
             "PLAT",
             "Platform",
-            c(
-                "XFe24" = "xfe24wetqc",
-                "XFe96" = "xfe96wetqc",
-                "XFp" = "xfpwetqc",
-                "XF24" = "xf24legacy"
-            ),
+        c(
+          "XFe24" = "B",
+          "XFe96" = "W",
+          "XFp" = "C",
+          "XF24" = "Q"
+        ),
             selected = FALSE,
             multiple = FALSE
         ),
