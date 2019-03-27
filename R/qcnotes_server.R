@@ -7,7 +7,7 @@ shinyServer(function(input, output, session) {
                {
                  updateSelectInput(session,
                                    'Lot',
-                                   choices = LLP::retreive_note_lots(input$PLAT))
+                                   choices = aLOT$get(input$PLAT))
                })
   
   observeEvent(input$Lot, {
