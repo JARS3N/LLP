@@ -1,10 +1,7 @@
 ---
 title: "Shiny Apps"
 date: "index updated: 2019-03-12"
-output:
-  prettydoc::html_pretty:
-    theme: architect
-highlight: github
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
@@ -56,8 +53,8 @@ alters the latest version of the AKOS snowflake file for Wave
 ingests an xlsx file and runs anova and Tukey HSD on normailzed OCR rates for measure 3 using predefined groupings  
 + [Spock Eye Exam](/jarsenault/eye_exam)  
 can spock see the G-drive?  
-
-## Applied Engineering 
-### Cell Culture
-+ [Cell Culture Input](/jarsenault/cellcultureinput)
-adding Cell Culture passage and viability info to the database
+  
+## Applied Engineering  
+### Cell Culture  
++ [Cell Culture Input](/jarsenault/cellcultureinput)  
+adding Cell Culture passage and viability info to the database  
