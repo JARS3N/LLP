@@ -6,7 +6,7 @@ cellculture_server <- function() {
     TBL <- new.env()
     TBL$data <- data.frame()
     
-    shinyServer(function(input, output) {
+    shinyServer(function(input, output,session) {
         observeEvent(input$add, {
             TBL$data <- dplyr::bind_rows(
                 TBL$data,
@@ -25,6 +25,10 @@ cellculture_server <- function() {
                 TBL$data
             }, options = list(dom = 't'))
             # print(TBL$data)
+            updateNumericInput(session,"passage",value=0)
+            updateNumericInput(session,"count",value=0)
+            updateNumericInput(session,"viability",value=0)
+            updateTextAreaInput(session,"notes",value=NA)
         })
         #########
         observeEvent(input$clear, {
