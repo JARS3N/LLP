@@ -47,6 +47,8 @@ Light Leak data for instrument QC plotted in sequence by instrument
 O2 Outlier analysis, only requires asyr files. Will return a zip file of data and plots  
 + [Barcode Coefficient Look-up](/jarsenault/GetBarcodeCoefs)  
 Retreive cartridge barcode coefficients by Lot,provided they exist in the database  
++ [Related Lots](/jarsenault/related_lots)  
+lists fluorophore,lots using the same fluors and coefficients  
 + [snowflakes](/jarsenault/snowflakes)  
 alters the latest version of the AKOS snowflake file for Wave  
 + [Anova-HSD](/jarsenault/anovaHSD)  
