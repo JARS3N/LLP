@@ -1,4 +1,4 @@
-get_related_tbl <- function(LOT, TYPE) {
+get_related_tbl <- function(LOT, TYPE,db) {
   if (LOT == "") {
     return(NULL)
   }
