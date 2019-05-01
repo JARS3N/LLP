@@ -5,11 +5,11 @@ get_related_tbl <- function(LOT, TYPE) {
   if (is.null(LOT)) {
     return(NULL)
   }
-  checkforlot <-
+ checkforlot <-
     tbl(db, "lotview") %>% 
-    select(`Lot Number`) %>% 
+    select(`Lot Number`,Type) %>% 
     distinct() %>% 
-    filter(`Lot Number` == LOT) %>% 
+    filter(`Lot Number` == LOT & Type == TYPE) %>% 
     count() %>% 
     collect()
   
