@@ -1,4 +1,4 @@
-weeklt_ae_server<-function(){
+weekly_ae_server<-function(){
 
 library(dplyr)
 library(shiny)
