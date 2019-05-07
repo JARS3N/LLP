@@ -47,12 +47,12 @@ E<-new.env()
       proxy <- dataTableProxy('testDT')
 
     })
-    observeEvent(input$testDT_cell_edit, {
+        observeEvent(input$testDT_cell_edit, {
       info <- input$testDT_cell_edit
       i <- info$row
       j <- info$col + 4  # column index offset by 1
       v <- info$value
-           if(j==4){
+      if(j==4){
         output$testDT <-
           renderDT(
             E$x[,-c(2:4)],
@@ -73,5 +73,7 @@ E<-new.env()
       RMySQL::dbDisconnect(db)
       }
     })
+    
   })
+
 }
