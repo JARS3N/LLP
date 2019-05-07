@@ -52,6 +52,16 @@ E<-new.env()
       i <- info$row
       j <- info$col + 4  # column index offset by 1
       v <- info$value
+           if(j==4){
+        output$testDT <-
+          renderDT(
+            E$x[,-c(2:4)],
+            selection = 'none',
+            rownames = E$x[,1],
+            editable = T,
+            options = list(dom = 't',ordering=F)  #ordering resets tbl vals
+          )
+      }else{
       year<-year(input$dates)
       month<-month(input$dates)
       week<-week(input$dates)
@@ -61,7 +71,7 @@ E<-new.env()
       snt<-RMySQL::dbSendQuery(db,q)
       RMySQL::dbClearResult(snt)
       RMySQL::dbDisconnect(db)
+      }
     })
-    
   })
 }
