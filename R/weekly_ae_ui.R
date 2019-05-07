@@ -1,6 +1,6 @@
 weekly_ae_ui<-function(){
 library(shiny)
-
+library(DT)
 shinyUI(fluidPage(
     titlePanel("Applied Engineering Weekly Breakdown"),
         mainPanel(
