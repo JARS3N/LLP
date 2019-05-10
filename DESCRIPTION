@@ -7,6 +7,8 @@ Maintainer: Who to complain to <JARS3N@GMAIL.COM>
 Description: spock stuff
 License: none
 Imports:
-        RMySQL
+        RMySQL,
+        rmarkdown,
+        shinyjs
 Encoding: UTF-8
 LazyData: true
