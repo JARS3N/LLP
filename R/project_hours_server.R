@@ -16,7 +16,7 @@ shinyServer(function(input, output,session) {
                 paste0(
                     lubridate::month(input$dates,label=T,abbr = T),
                     "  Week ",
-                       lubridate::week(input$dates),
+                       lubridate::isoweek(input$dates),
                        " of ",
                        lubridate::year(input$dates)
                        )
@@ -45,7 +45,7 @@ shinyServer(function(input, output,session) {
                              task, 
                              lubridate::year(input$dates), 
                              lubridate::month(input$dates), 
-                             lubridate::week(input$dates))
+                             lubridate::isoweek(input$dates))
         print(str)
         update_proj(str)
         rm(str)
