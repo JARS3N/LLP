@@ -62,8 +62,8 @@ can spock see the G-drive?
 adding Cell Culture passage and viability info to the database  
 + [Project Hours](/jarsenault/weekly_ae)  
 project hour logging  
-+ [Project Hours stats](jarsenault/project_hour_stats)  
++ [Project Hours stats](/jarsenault/project_hour_stats)  
 %Breakdown of projects  
-+ [Related Lots](jarsenault/related_lots)   
++ [Related Lots](/jarsenault/related_lots)   
 Find lots with the same MF and barcode coefficients  
 ...
