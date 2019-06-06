@@ -1,6 +1,6 @@
 ---
 title: "Shiny Apps"
-date: "index updated: 2019-04-03"
+date: "index updated: 2019-06-06"
 output: html_document
 ---
 
