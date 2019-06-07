@@ -34,12 +34,17 @@ weeklystats_server <- function() {
             # print(input$date)
             # print(week(input$date))
             if (input$selproject == "all") {
-                PLOT <- ggplot(X$x, aes(user, 100 * hours / sum(hours))) +
-                    geom_col(aes(fill = project)) +
-                    theme_bw() +
-                    ylim(0, 100) +
-                    ggtitle("%Weekly Hours by Project & User") +
-                    ylab("%Weekly Hours")
+     PLOT <-  X$x %>% 
+    group_by(user) %>% 
+    mutate(.,total=sum(hours)) %>% 
+    ungroup() %>% 
+    mutate(percent=100*hours/total) %>% 
+    ggplot(., aes(user,percent )) +
+    geom_col(aes(fill = project)) +
+    theme_bw() +
+    ylim(0, 100) +
+    ggtitle("%Weekly Hours by Project & User") +
+    ylab("%Weekly Hours")
             } else{
                 PLOT <- filter(X$x, project == input$selproject) %>%
                     ggplot(., aes(user, 100 * hours / sum(hours))) +
