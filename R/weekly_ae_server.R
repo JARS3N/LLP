@@ -9,7 +9,7 @@ E<-new.env()
     observeEvent(input$dates, {
       E$x<-NULL
       E$yr<-year(input$dates)
-      E$wk<-week(input$dates)
+      E$wk<-lubridate::isoweek(input$dates)
       E$mnth<-month(input$dates)
       output$weekchosen <-
         renderText({
