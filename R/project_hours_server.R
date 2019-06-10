@@ -1,5 +1,6 @@
 
 project_hours_server<-function(){
+db<-adminKraken::con_dplyr()
 E<-new.env()
 library(shiny)
 library(DT)
@@ -7,7 +8,11 @@ library(lubridate)
 library(shiny)
 
 shinyServer(function(input, output,session) {
-    db<-adminKraken::con_dplyr()
+E$df <- pull_or_create(input$dates,db)
+   output$testDT <-renderDT(E$df,
+                                 editable = T,
+                                 options = list(ordering=F,dom = 't',pageLength = nrow(E$df))
+                                 )
     observeEvent(input$dates,{
     #print(input$dates)
     ##############
