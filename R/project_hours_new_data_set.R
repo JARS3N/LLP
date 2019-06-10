@@ -10,7 +10,7 @@ require(dplyr)
     X<-mutate(dplyr::bind_rows(lapply(B$user,function(u){mutate(A,user=u)})),hours=0)
     X$year<-lubridate::year(date)
     X$month<-lubridate::month(date)
-    X$week<-lubridate::week(date)
+    X$week<-lubridate::isoweek(date)
     X$active<-NULL
     X
 }
