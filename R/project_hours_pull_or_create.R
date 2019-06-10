@@ -16,10 +16,8 @@ require(dplyr)
         )
         dbDisconnect(db2)
     }
-    yr<-lubridate::year(date)
-    wk<-lubridate::isoweek(date)
     tbl(db,"projecthours") %>% 
-        filter(year==yr,week==wk) %>% 
+        filter(year==lubridate::year(date),week==lubridate::isoweek(date)) %>% 
         collect() %>% tidyr::spread(., user, hours) %>%
         select(-week,-month,-year)
 }
