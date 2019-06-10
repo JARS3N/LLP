@@ -6,7 +6,7 @@ titlePanel("Applied Engineering Weekly Breakdown"),
 
     sidebarLayout(
         # sidebarPanel(
-            dateInput('dates','Select Week',daysofweekdisabled=c(0,6),
+            dateInput('dates','Select Week',daysofweekdisabled=c(0,6)),
              
         # ),
 
