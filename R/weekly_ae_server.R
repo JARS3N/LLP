@@ -64,7 +64,7 @@ E<-new.env()
       }else{
       year<-year(input$dates)
       month<-month(input$dates)
-      week<-week(input$dates)
+      week<-lubridate::isoweek(input$dates)
       q<-LLP::create_update_string(year,month,week,v,names(E$x)[j],E$x[i,1])
       print(q)
       db<-adminKraken::con_mysql()
