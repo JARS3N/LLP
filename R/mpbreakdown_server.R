@@ -47,7 +47,8 @@ shinyServer(function(input, output, session) {
                position = position_stack(vjust = .5)
                 )+
       theme_void()+
-      ggthemes::scale_fill_calc()#
+      ggthemes::scale_fill_calc()+
+      guides(fill = guide_legend(reverse=TRUE))
   })
   
 })
