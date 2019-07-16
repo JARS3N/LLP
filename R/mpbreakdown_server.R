@@ -32,6 +32,7 @@ shinyServer(function(input, output, session) {
       coord_flip() + ggtitle(paste0("%Hours by Project for ",
                                     month.name[as.numeric(input$month)], " ", input$year)) +
       ylab("") + xlab("") + theme_minimal()+
+    ggthemes::scale_fill_calc()+
     guides(color = FALSE, size = FALSE)
   })
     output$distPlot2 <- renderPlot({
