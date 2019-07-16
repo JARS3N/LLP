@@ -33,5 +33,22 @@ shinyServer(function(input, output, session) {
                                     month.name[as.numeric(input$month)], " ", input$year)) +
       ylab("") + xlab("") + theme_minimal()
   })
+    output$distPlot2 <- renderPlot({
+    x3 <- filter(x,month==input$month) %>% 
+      arrange(percent) %>%
+      filter(percent>0) %>% 
+      mutate(., project = factor(project, levels = project))
+    ggplot(x3,aes(x="",y=percent,fill=project))+
+      geom_bar(stat="identity", width=1,col="white")+
+      coord_polar("y", start=0)+
+      geom_text(col="black",
+                size=5,
+                aes(label = paste0(round(percent), "%")), 
+               position = position_stack(vjust = .5)
+                )+
+      theme_void()+
+      ggthemes::scale_fill_calc()#
+  })
+  
 })
 }
