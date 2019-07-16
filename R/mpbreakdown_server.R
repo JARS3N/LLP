@@ -33,7 +33,7 @@ shinyServer(function(input, output, session) {
                                     month.name[as.numeric(input$month)], " ", input$year)) +
       ylab("") + xlab("") + theme_minimal()+
     ggthemes::scale_fill_calc()+
-    guides(color = FALSE, size = FALSE)
+    guides(fill = FALSE, size = FALSE)
   })
     output$distPlot2 <- renderPlot({
     x3 <- filter(x,month==input$month) %>% 
