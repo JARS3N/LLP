@@ -26,17 +26,18 @@ shinyServer(function(input, output, session) {
   output$distPlot <- renderPlot({
     x2 <-x %>% filter(month==input$month) %>% 
     arrange( percent) %>% mutate(., project = factor(project, levels = project))
-    ggplot(x2, aes(project, percent)) + geom_col(fill = rgb(0.1,
-                                                            0.1, 0.9, 0.8),
-                                                 col = rgb(0, 0, 0.5, 0.75)) +
+    ggplot(x2, aes(project, percent)) + 
+   # geom_col(fill = rgb(0.1,0.1, 0.9, 0.8), col = rgb(0, 0, 0.5, 0.75)) +
+    geom_col(aes(fill=project))+
       coord_flip() + ggtitle(paste0("%Hours by Project for ",
                                     month.name[as.numeric(input$month)], " ", input$year)) +
-      ylab("") + xlab("") + theme_minimal()
+      ylab("") + xlab("") + theme_minimal()+
+    guides(color = FALSE, size = FALSE)
   })
     output$distPlot2 <- renderPlot({
     x3 <- filter(x,month==input$month) %>% 
       arrange(percent) %>%
-      filter(percent>0) %>% 
+      #filter(percent>0) %>% 
       mutate(., project = factor(project, levels = project))
     ggplot(x3,aes(x="",y=percent,fill=project))+
       geom_bar(stat="identity", width=1,col="white")+
