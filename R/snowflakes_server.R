@@ -5,7 +5,7 @@ snowflakes_server <- function() {
   require(shiny)
   require(XML)
   
-  sf <- "http://magnix/jira/secure/attachment/42236/SnowFlake.txt"
+  sf <- file.path(system.file(package="LLP"),"snowflake.txt")
   xml <- XML::xmlInternalTreeParse(sf)
   r_list <- unlist(XML::xmlToList(xml))
   comment <- ""
