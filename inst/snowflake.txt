@@ -1,0 +1,21 @@
+<ConfigOverrides>
+	<exportdata>true</exportdata>
+	<Wells>13</Wells>
+	<backgroundcorrection>true</backgroundcorrection>
+	<refcorrectionfix>false</refcorrectionfix>
+	<leveldatacorrection>false</leveldatacorrection>
+	<newf0>false</newf0>
+	<newcalibrationfix>false</newcalibrationfix>
+	<newbackgroundcorrection>false</newbackgroundcorrection>
+	<overridevalues>false</overridevalues>
+	<TauAC>1000000</TauAC>
+	<TauAW>-1</TauAW>
+	<TauW>1000000</TauW>
+	<TauC>1000000</TauC>
+	<TauP>-1</TauP>
+	<cv>-1</cv>
+	<F0>-1</F0>
+	<KSV>-1</KSV>
+	<CO>-1</CO>
+	<starttick>3</starttick>
+</ConfigOverrides>
