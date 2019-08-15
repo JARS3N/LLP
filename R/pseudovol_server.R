@@ -1,4 +1,4 @@
-psuedovol_server<-function(){
+pseudovol_server<-function(){
 library(shiny)
 shinyServer(function(input, output,session) {
 
