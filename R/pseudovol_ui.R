@@ -1,4 +1,4 @@
-psuedovol_ui<-function(){
+pseudovol_ui<-function(){
 library(shiny)
 shinyUI(fluidPage(
     titlePanel("Change Pseudo Volume"),
