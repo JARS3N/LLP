@@ -1,3 +1,3 @@
-psuedovol_app<-function(){
+pseudovol_app<-function(){
 shiny::shinyApp(LLP::pseudovol_ui(),LLP::pseudovol_server())
 }
