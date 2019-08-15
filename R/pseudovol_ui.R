@@ -1,7 +1,7 @@
 psuedovol_ui<-function(){
 library(shiny)
 shinyUI(fluidPage(
-    titlePanel("Change Psuedo Volume"),
+    titlePanel("Change Pseudo Volume"),
     mainPanel(
         numericInput("chamber", "chamber volume", NULL),
         shiny::fileInput("FILE", "upload file"),
