@@ -17,7 +17,7 @@ observeEvent(input$Lot,{
 
 })
 output$downloadData <- downloadHandler(
-    filename<-paste0(input$PLAT,input$Lot,".pdf"),
+    filename = paste0(input$PLAT,input$Lot,".pdf"),
     content <- function(file) {
         normalizePath(paste0(input$PLAT,".rmd")) %>%
             readLines(.) %>%
