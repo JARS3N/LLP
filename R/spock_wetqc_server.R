@@ -33,7 +33,7 @@ shinyServer(function(input, output, session) {
   })
   observeEvent(input$goButton, {
     output$MSG <- renderText("Ready")
-    if (input$goButton[1] > 0) {
+    if (length(input$goButton$name) > 0) {
       output$MSG <- renderText("Select Directory")
       output$MSG <- renderText("Munging Data...")
       procd <- lapply(
