@@ -228,7 +228,7 @@ ol_server<-function(){
 
       })
 
-      output$table <- renderDataTable(D1, options = list(dom = 't'))
+    #  output$table <- renderDataTable(D1, options = list(dom = 't'))
 
     })
 
