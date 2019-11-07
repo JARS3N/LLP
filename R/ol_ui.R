@@ -1,6 +1,6 @@
 ol_ui<-function(){
   library(shiny)
-    titlePanel("Outliers"),
+    titlePanel("Outliers")
     sidebarLayout(
       sidebarPanel(
         width = 3,
