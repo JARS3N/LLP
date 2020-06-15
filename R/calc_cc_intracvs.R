@@ -10,7 +10,7 @@ ORDER by yr ASC,day ASC;"
 query_string <- gsub("%INST%", inst, gsub("%TBL%", tbl, gsub("%VAR%" , var, str_0)))
                      
              query_sent<-RMySQL::dbSendQuery(db,query_string)
-             x<-RMySQL::dbFetch(query_sent)
+             x<-RMySQL::dbFetch(query_sent,n=-1)
              RMySQL::dbClearResult(query_sent)
              x$Lot<-factor(x$Lot,levels = x$Lot)
              x
