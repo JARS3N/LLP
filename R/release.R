@@ -231,8 +231,8 @@ public = list(
       self$wetqc<-self$pull_wetqc(self$tbl,self$Lot,self$Inst)
       self$targets <- self$get_targets(self$Lot)
       self$targets$LED_LOW <-setNames(c(1000,1000,1000,200),c("W","B","C","Q"))[self$type]
-      self$targets$pH_LED_high <-setNames(c(15000,20000,10000,900),c("W","B","C","Q"))[self$type]
-      self$targets$O2_LED_high <-setNames(c(15000,17000,3000,900),c("W","B","C","Q"))[self$type]
+      self$targets$pH_LED_high <-setNames(c(15000,15000,15000,900),c("W","B","C","Q"))[self$type]
+      self$targets$O2_LED_high <-setNames(c(15000,15000,3000,900),c("W","B","C","Q"))[self$type]
       self$targets$attr_len <- setNames(c(rep(8,3),11),c("W","B","C","Q"))[self$type]
       self$sn_means <-
         group_by(self$wetqc,sn) %>%
