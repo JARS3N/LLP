@@ -27,7 +27,7 @@ public = list(
        }
       db <- adminKraken::con_mysql()
       q <- RMySQL::dbSendQuery(db, str)
-      fet <- RMySQL::fetch(q)
+      fet <- RMySQL::fetch(q,n=-1)
       RMySQL::dbClearResult(q)
       RMySQL::dbDisconnect(db)
       fet
