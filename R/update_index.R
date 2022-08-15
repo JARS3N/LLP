@@ -1,5 +1,8 @@
 update_index<-function(){
   from<-list.files(system.file(package="LLP"),pattern='index.html',full.names=T)
   to<-"/home/jarsenault/ShinyApps/index.html"
-file.copy(from = from, to = to)
+  old <-"/home/jarsenault/ShinyApps/index.html.old"
+  file.rename(to,old)
+  file.copy(from = from, to = to)
+  unlink(old)
 }
