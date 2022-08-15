@@ -35,6 +35,7 @@ Boxplot of Surfx contact angle data by platform ordered by Lot
 Machine Vision data Lots variables plotted in order of cartridge serial number  
 + [Machine Vision Control Chart](/jarsenault/MVplatformview)  
 Machine Vision data plotted by platform in order of Lots  
+  
 #### Outliers
 + [Process Outlier Data](/jarsenault/Outliers)  
 O2 Outlier analysis, only requires asyr files. Will return a zip file of data and plots 
@@ -52,6 +53,8 @@ Retreive cartridge barcode coefficients by Lot,provided they exist in the databa
 Find lots with the same MF and barcode coefficients  
   
 ### Other Tools
++ [Partial Pressure O2](/jarsenault/partialpressureO2)
+plot of O2 model for partial pressure of O2 using Temp and atmospheric pressure
 + [Spock Eye Exam](/jarsenault/eye_exam)  
 can spock see the G-drive?   
 ...
