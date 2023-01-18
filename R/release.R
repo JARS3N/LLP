@@ -43,70 +43,6 @@ public = list(
                           mutate(gain=(phem*slope)+intercept) %>% 
                           collect(.,warnings=FALSE) )
     },
-   get_sh= function(lot){
-      db<-adminKraken::con_dplyr()
-      out<-tbl(db,"xf24spotheight") %>%
-        filter(Lot==lot) %>%
-        summarize(pHeight=mean(pHeight,na.rm=T),oHeight=mean(oHeight,na.rm=T)) %>% 
-        collect()
-      rm(db)
-      gc()
-      out
-    },
-   get_dqc = function(lot){
-     my_db<-adminKraken::con_dplyr()
-     q<- my_db %>%
-       tbl("dryqcxf24") %>%
-       filter(Lot==lot) %>%
-       mutate(.,PFO2=O2<O2Threshold & O2 > 3) %>%
-       mutate(.,PFPH=pH<pHThreshold & pH > 3) %>%
-       mutate(.,Pass= PFO2 * PFPH) %>%
-       group_by(.,sn) %>%
-       summarise(.,Pass=floor(sum(Pass,na.rm=T)/24)) %>%
-       summarise(.,
-                 percent_fail=100*(1-(sum(Pass,na.rm=T)/n()))
-       ) %>% 
-       collect() %>% .$percent_fail %>% 
-       round(.,2)
-     100-q
-   },
-   gen_spec_test =function(Z){
-     list(
-       (function(u) {
-         u > Z$LOW_LED && u < Z$pH_LED_high
-       }),
-       (function(u) {
-         u < 30
-       }),
-       (function(u) {
-         j<-Z$gain*c(.9,1.1)
-         u>=j[1] && j <=j[2]
-       }),
-       (function(u) {
-         u < 5
-       }),
-       (function(u) {
-         u > Z$LOW_LED && u < Z$O2_LED_high
-       }),
-       (function(u) {
-         u < 30
-       }),
-       (function(u) {
-         j<-Z$ksv*c(.9,1.1)
-         u>=j[1] && j <=j[2]
-       }),
-       (function(u) {
-         u < 5
-       }),
-       (function(u){
-         u<0.003
-       }),
-       (function(u){
-         u<0.003
-       }),
-       (function(u){u >= 80})
-     )[1:Z$attr_len] 
-   },
    gen_attr=function(x){c(
      "pH.LED.avg",
      'pH.LED.CV',
@@ -115,11 +51,8 @@ public = list(
      'O2.LED.Avg',
      'O2.LED.CV',
      'KSV.Avg',
-     'KSV.CV',
-     'pH Height',
-     'O2 Height',
-     'Spot Deposition'
-   )[1:x]
+     'KSV.CV'
+   )
      },
    gen_spec_str =
      function(ledlow,
@@ -136,11 +69,8 @@ public = list(
          paste0(">= ", ledlow, " & <=", o2ledhigh),
          "< 30",
          paste0(ksv * c(1, .1), collapse = " +/- ") ,
-         "< 5",
-         "< 0.003",
-         "< 0.003",
-         ">=80%"
-       )[1:attrlen]
+         "< 5"
+       )
      },
    test_specs = function(LED_low,pH_LED_high,O2_LED_high,gain,ksv,attrlen){
      list(
@@ -169,15 +99,8 @@ public = list(
        }),
        (function(u) {
          u < 5
-       }),
-       (function(u){
-         u<0.003
-       }),
-       (function(u){
-         u<0.003
-       }),
-       (function(u){u >= 80})
-     )[1:attrlen] 
+       })
+     )
    },
    get_kable = function(){
     if(is.null(self$kable_markdown)){ 
@@ -245,8 +168,6 @@ public = list(
       self$means <- summarise_all(self$sn_means,list(mean),na.rm=T)
       self$sds <- summarise_all(self$sn_means,list(sd),na.rm=T)
       self$cvs <- self$sds / self$means * 100
-      if(self$type=="Q"){self$spot_height<-self$get_sh(self$Lot)}
-      if(self$type=="Q"){self$dryqc<-self$get_dqc(self$Lot)}
       self$ctg_means<-data.frame(attributes =self$gen_attr(self$targets$attr_len))
       self$ctg_means$Values = c(
         round(self$means$pH.Led.avg,0),
@@ -257,10 +178,7 @@ public = list(
         round(self$cvs$O2.Led.avg,2),
         round(self$means$KSV.avg,4),
         round(self$cvs$KSV.avg,2),
-        if(self$type!="Q"){NULL}else{round(self$spot_height$pHeight,5)},
-        if(self$type!="Q"){NULL}else{round(self$spot_height$oHeight,5)},
-        if(self$type!="Q"){NULL}else{self$dryqc}
-      )[1:self$targets$attr_len]
+      )
       self$ctg_means$specifications<-self$gen_spec_str(self$targets$LED_LOW,
                                    self$targets$pH_LED_high,
                                    self$targets$O2_LED_high,
@@ -273,11 +191,21 @@ public = list(
                                        self$targets$gain,
                                        self$targets$ksv,
                                        self$targets$attr_len)
-      self$ctg_means$Results<-unlist(Map(function(x, y) { x(y)},
-                              x=self$specs_here,
-                              y = self$ctg_means$Value))
-      self$ctg_means$Results <-
-        c("FAIL", "PASS")[as.numeric(factor(self$ctg_means$Results, levels = c(FALSE, TRUE)))]
+      self$ctg_means$Results<-function(self$targets,self$ctg_means){
+          # takes self$targets & self$ctg_means
+          vals<setNames(self$ctg_means$Values,self$ctg_means$attributes)
+          OUT<- NULL
+          OUT[1] <- vals['pH.LED.avg'] >= targets$LED_LOW &  vals['pH.LED.avg'] <=  targets$pH_LED_high
+          OUT[2] <- vals['pH.LED.CV'] < 30
+          OUT[3] <- vals['Gain.Avg'] >= (.9 * targets$gain) & vals['Gain.Avg'] <= (1.1 * targets$gain)
+          OUT[4] <- vals['Gain.CV'] < 5
+          OUT[5] <- vals['O2.LED.Avg'] >= targets$LED_LOW &  vals['O2.LED.Avg'] <=  targets$O2_LED_high
+          OUT[6] <- vals['O2.LED.CV'] < 30
+          OUT[7] <- vals['KSV.Avg'] >= (.9 * targets$ksv) & vals['KSV.Avg'] <= (1.1 * targets$ksv)
+          OUT[8] <- vals['KSV.CV'] < 5
+          c("FAIL","PASS")[factor(OUT)]
+}
+
       self$ctg_means$Results[is.na(self$ctg_means$Results)]<-"???"
       self$ctg_means$Values[is.na(self$ctg_means$Values)]<-"missing"
       
