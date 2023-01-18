@@ -72,36 +72,6 @@ public = list(
          "< 5"
        )
      },
-   test_specs = function(LED_low,pH_LED_high,O2_LED_high,gain,ksv,attrlen){
-     list(
-       (function(u) {
-         u > LED_low && u < pH_LED_high
-       }),
-       (function(u) {
-         u < 30
-       }),
-       (function(u) {
-         j<-gain*c(.9,1.1)
-         u>=j[1] && j <=j[2]
-       }),
-       (function(u) {
-         u < 5
-       }),
-       (function(u) {
-         u > LED_low && u < O2_LED_high
-       }),
-       (function(u) {
-         u < 30
-       }),
-       (function(u) {
-         j<-ksv*c(.9,1.1)
-         u>=j[1] && j <=j[2]
-       }),
-       (function(u) {
-         u < 5
-       })
-     )
-   },
    get_kable = function(){
     if(is.null(self$kable_markdown)){ 
       self$kable_markdown <-knitr::kable(self$ctg_means,
@@ -148,7 +118,7 @@ public = list(
          "### Deviation Approved by:  ",
          sig_section
        )
-       plat<- c("W"="XFe96","B"="XFe24","C"="XFp","Q"="XF24")[self$type]
+       plat<- c("W"="XFe96","B"="XFe24","C"="XFp")[self$type]
        vars<- c("%Lot%","%inst%","%PLAT%")
        vals<- c(self$Lot,self$Inst,plat)
        for (i in 1:3) {fl<-gsub(vars[i],vals[i],fl)}
@@ -195,14 +165,12 @@ public = list(
                                    self$targets$pH_LED_high,
                                    self$targets$O2_LED_high,
                                    self$targets$gain,
-                                   self$targets$ksv,
-                                   self$targets$attr_len)
+                                   self$targets$ksv)
       self$specs_here<-self$test_specs(self$targets$LED_LOW,
                                        self$targets$pH_LED_high,
                                        self$targets$O2_LED_high,
                                        self$targets$gain,
-                                       self$targets$ksv,
-                                       self$targets$attr_len)
+                                       self$targets$ksv)
       
       self$ctg_means$Results<-self$get_results(self$targets, self$ctg_means)
       self$ctg_means$Results[is.na(self$ctg_means$Results)]<-"???"
