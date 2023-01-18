@@ -191,9 +191,9 @@ public = list(
                                        self$targets$gain,
                                        self$targets$ksv,
                                        self$targets$attr_len)
-      self$ctg_means$Results<-function(self$targets,self$ctg_means){
-          # takes self$targets & self$ctg_means
-          vals<setNames(self$ctg_means$Values,self$ctg_means$attributes)
+      
+      self$ctg_means$Results<-function(self$targets, self$ctg_means){
+          vals<-setNames(self$ctg_means$Values,self$ctg_means$attributes)
           OUT<- NULL
           OUT[1] <- vals['pH.LED.avg'] >= targets$LED_LOW &  vals['pH.LED.avg'] <=  targets$pH_LED_high
           OUT[2] <- vals['pH.LED.CV'] < 30
