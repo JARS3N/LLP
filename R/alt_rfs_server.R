@@ -5,8 +5,8 @@ require(dplyr)
 require(rmarkdown)
 library(shinyjs)
 shinyjs::useShinyjs()
-tbl<-c("XFe24LotRelease","XFe96LotRelease","XFpLotRelease", "XF24LotRelease")
-type<-c("B","W","C","Q")
+tbl<-c("XFe24LotRelease","XFe96LotRelease","XFpLotRelease")
+type<-c("B","W","C")
 G<-new.env()
 for (i in 1:4){
   assign(
