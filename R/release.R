@@ -159,7 +159,7 @@ public = list(
         round(self$means$O2.Led.avg,0),
         round(self$cvs$O2.Led.avg,2),
         round(self$means$KSV.avg,4),
-        round(self$cvs$KSV.avg,2),
+        round(self$cvs$KSV.avg,2)
       )
       self$ctg_means$specifications<-self$gen_spec_str(self$targets$LED_LOW,
                                    self$targets$pH_LED_high,
