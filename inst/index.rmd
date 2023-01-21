@@ -1,6 +1,6 @@
 ---
 title: "Shiny Apps"
-date: "index updated: 2022-08-15"
+date: "index updated: `r Sys.Date()`"
 output: html_document
 ---
 
@@ -17,12 +17,7 @@ Boxplots of Cartridge QC Lot data, grouped and ordered by serial number
 print out pdf summary of QC data for Lot release.  
 + [QC Notes](/jarsenault/QCNOTES)  
 Add notes to the database about cartridge QC Lots  
-  
-#### Spot Height
-+ [Spot Height Data entry](/jarsenault/SpotHeight)  
-Form to enter spotheight data into the database  
-+ [Spot Height Plots](/jarsenault/spot_height_plot)  
-plots for spot height  
+
   
 #### Surfx
 + [SURFX Data Entry](/jarsenault/SURFXentry)  
