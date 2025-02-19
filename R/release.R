@@ -41,7 +41,7 @@ public = list(
                           left_join(.,tbl(my_db,"barcodematrixview"),by="ID") %>% 
                           select( ID,o2em=O2_A,ksv=O2_B,phem=PH_A,slope=PH_B,intercept=PH_C) %>% 
                           mutate(gain=(phem*slope)+intercept) %>% 
-                          collect(.,warnings=FALSE) )
+                          collect() )
     },
    gen_attr=function(x){c(
      "pH.LED.avg",
