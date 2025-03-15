@@ -13,43 +13,24 @@ knitr::opts_chunk$set(echo = TRUE)
 Line plots with sd error bars of Cartridge QC data by platform and Instrument,ordered by Lot.  
 + [Cartridge QC Lot Data](/jarsenault/XFeCCLot)  
 Boxplots of Cartridge QC Lot data, grouped and ordered by serial number  
-+ [XFe Release Form](/jarsenault/alt_rfs)  
++ [Cartridge Lot Release Form](/jarsenault/rfs)  
 print out pdf summary of QC data for Lot release.  
-+ [QC Notes](/jarsenault/QCNOTES)  
-Add notes to the database about cartridge QC Lots  
 
-  
-#### Surfx
-+ [SURFX Data Entry](/jarsenault/SURFXentry)  
-Entry form for surfx contact angle data from cartridge spotting  
-+ [Surfx Contact Angle Control Charts](/jarsenault/SurfxContactAngle)  
-Boxplot of Surfx contact angle data by platform ordered by Lot  
-  
-#### Machine Vision
-+ [Machine Vision Lot View](/jarsenault/MVData)  
-Machine Vision data Lots variables plotted in order of cartridge serial number  
-+ [Machine Vision Control Chart](/jarsenault/MVplatformview)  
-Machine Vision data plotted by platform in order of Lots  
-  
 #### Outliers
 + [Process Outlier Data](/jarsenault/Outliers)  
 O2 Outlier analysis, only requires asyr files. Will return a zip file of data and plots 
   
 ### Instrument QC  
-+ [Instrument QC O2 Outlier Control Chart](/jarsenault/InstQCOL)  
++ [Instrument QC O2 Outlier Control Chart](/jarsenault/InstQCOL)  *Not Active
 instrument QC outliers plotted in sequence by Lot  
-+ [Light Leak Control Chart](/jarsenault/lightLeakApp)  
++ [Light Leak Control Chart](/jarsenault/lightLeakApp)  * Not Active
 Light Leak data for instrument QC plotted in sequence by instrument  
     
 ## Applied Engineering  
-+ [Barcode Coefficient Look-up](/jarsenault/GetBarcodeCoefs)  
++ [Barcode Coefficient Look-up](/jarsenault/coefs)  
 Retreive cartridge barcode coefficients by Lot,provided they exist in the database  
-+ [Related Lots](/jarsenault/related_lots)   
-Find lots with the same MF and barcode coefficients  
   
 ### Other Tools
-+ [Partial Pressure O2](/jarsenault/partialpressureO2)
++ [Partial Pressure O2](/jarsenault/ppO2)
 plot of O2 model for partial pressure of O2 using Temp and atmospheric pressure
-+ [Spock Eye Exam](/jarsenault/eye_exam)  
-can spock see the G-drive?   
 ...
