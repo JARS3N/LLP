@@ -9,7 +9,6 @@ CQC_LotView_server <- function(input, output, session) {
   TBL$B <- "xfe24wetqc"
   TBL$W <- "xfe96wetqc"
   TBL$C <- "xfpwetqc"
-  TBL$Q <- "xf24legacy"
 
   db <- adminKraken::con_mysql()
 
