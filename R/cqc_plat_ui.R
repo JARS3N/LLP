@@ -21,7 +21,7 @@ cqc_plat_ui <- function() {
                  selectInput("INST", "Select Instrument", c('NULL')),
                  selectInput("PLAT", "Platform",
                              c("XFe24" = "xfe24wetqc", "XFe96" = "xfe96wetqc", 
-                               "XFp" = "xfpwetqc", "XF24" = "xf24legacy"))
+                               "XFp" = "xfpwetqc"))
     )
   ))
 }
