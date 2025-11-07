@@ -34,25 +34,47 @@ output$plot1 <- plotly::renderPlotly({
   dat <- selectedData()
   shiny::req(NROW(dat) > 0)
 
+  dat <- as.data.frame(dat)
   dat$sn   <- factor(dat$sn)
   dat$Inst <- factor(dat$Inst)
 
-  plotly::plot_ly(
-    data = dat,
-    x = ~sn, y = ~val, color = ~Inst,
-    type = "box",
-    boxpoints = "all",   # show the points on the same trace
-    jitter = 0.3,
-    pointpos = 0,
-    marker = list(size = 6, opacity = 0.6, line = list(width = 1)),
-    line   = list(width = 1)
-  ) %>%
-    plotly::layout(
-      title = list(text = input$Lot),
-      xaxis = list(title = "Serial Number"),
-      yaxis = list(title = input$Variable),
-      boxmode = "group",                   # group by Inst within each sn
-      legend = list(itemclick = "toggle", itemdoubleclick = "toggleothers")
-    )
+  p <- ggplot2::ggplot(dat, ggplot2::aes(x = factor(sn), y = val, fill = Inst)) +
+    ggplot2::geom_boxplot(outlier.shape = NA, outlier.alpha = 1e-5, outlier.color = "white") +
+    ggplot2::geom_jitter(
+      shape = 22, alpha = .6, size = 3.5, color = "black",
+      width = 0.2, height = 0
+    ) +
+    ggplot2::xlab("Serial Number") +
+    ggplot2::ylab(input$Variable) +
+    ggplot2::ggtitle(input$Lot) +
+    ggplot2::theme_bw() +
+    ggthemes::scale_fill_gdocs()
+
+  # Avoid brittle merge; then edit traces so only points show in legend
+  g <- plotly::ggplotly(p, originalData = FALSE, tooltip = c("sn","val","Inst"))
+
+  for (i in seq_along(g$x$data)) {
+    tr <- g$x$data[[i]]
+    # hide box traces from legend; keep scatter (points) in legend
+    if (identical(tr$type, "box")) {
+      g$x$data[[i]]$showlegend <- FALSE
+    } else if (identical(tr$type, "scatter")) {
+      g$x$data[[i]]$showlegend <- TRUE
+      # optional: make point markers a bit clearer
+      if (is.null(g$x$data[[i]]$marker)) g$x$data[[i]]$marker <- list()
+      g$x$data[[i]]$marker$size <- 6
+      g$x$data[[i]]$marker$opacity <- 0.6
+      g$x$data[[i]]$marker$line <- list(width = 1)
+    }
+  }
+
+  plotly::layout(
+    g,
+    legend = list(itemclick = "toggle", itemdoubleclick = "toggleothers"),
+    xaxis = list(title = "Serial Number"),
+    yaxis = list(title = input$Variable),
+    title = list(text = input$Lot)
+  )
 })
+
 }
