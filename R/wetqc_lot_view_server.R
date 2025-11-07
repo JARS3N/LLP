@@ -44,37 +44,38 @@ output$plot1 <- plotly::renderPlotly({
       shape = 22, alpha = .6, size = 3.5, color = "black",
       width = 0.2, height = 0
     ) +
-    ggplot2::xlab("Serial Number") +
-    ggplot2::ylab(input$Variable) +
-    ggplot2::ggtitle(input$Lot) +
+    ggplot2::labs(x = "Serial Number", y = input$Variable, title = input$Lot) +
     ggplot2::theme_bw() +
     ggthemes::scale_fill_gdocs()
 
-  # Avoid brittle merge; then edit traces so only points show in legend
+  # convert without fragile merge
   g <- plotly::ggplotly(p, originalData = FALSE, tooltip = c("sn","val","Inst"))
 
+  # post-process traces: hide boxes from legend, points stay in legend only
   for (i in seq_along(g$x$data)) {
     tr <- g$x$data[[i]]
-    # hide box traces from legend; keep scatter (points) in legend
     if (identical(tr$type, "box")) {
-      g$x$data[[i]]$showlegend <- FALSE
+      # keep boxes always visible, never in legend, and in a different legendgroup
+      g$x$data[[i]]$showlegend   <- FALSE
+      g$x$data[[i]]$legendgroup  <- paste0(tr$name, "_box")
     } else if (identical(tr$type, "scatter")) {
-      g$x$data[[i]]$showlegend <- TRUE
-      # optional: make point markers a bit clearer
+      # points are the only legend items; make sure they don't toggle the boxes
+      g$x$data[[i]]$showlegend   <- TRUE
+      g$x$data[[i]]$legendgroup  <- paste0(tr$name, "_pts")
+      # (optional cosmetics)
       if (is.null(g$x$data[[i]]$marker)) g$x$data[[i]]$marker <- list()
-      g$x$data[[i]]$marker$size <- 6
+      g$x$data[[i]]$marker$size    <- 6
       g$x$data[[i]]$marker$opacity <- 0.6
-      g$x$data[[i]]$marker$line <- list(width = 1)
+      g$x$data[[i]]$marker$line    <- list(width = 1)
     }
   }
 
   plotly::layout(
     g,
     legend = list(itemclick = "toggle", itemdoubleclick = "toggleothers"),
-    xaxis = list(title = "Serial Number"),
-    yaxis = list(title = input$Variable),
-    title = list(text = input$Lot)
+    xaxis  = list(title = "Serial Number"),
+    yaxis  = list(title = input$Variable),
+    title  = list(text = input$Lot)
   )
 })
-
 }
