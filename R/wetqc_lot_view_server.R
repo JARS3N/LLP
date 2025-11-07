@@ -34,25 +34,25 @@ output$plot1 <- plotly::renderPlotly({
   dat <- selectedData()
   shiny::req(NROW(dat) > 0)
 
-  dat <- as.data.frame(dat)
-  # make sure names are safe/unique (prevents accidental collisions)
-  names(dat) <- make.names(names(dat), unique = TRUE)
-
-  # factors for grouping
   dat$sn   <- factor(dat$sn)
   dat$Inst <- factor(dat$Inst)
 
-  p <- ggplot2::ggplot(dat, ggplot2::aes(x = sn, y = val, fill = Inst)) +
-    ggplot2::geom_boxplot(outlier.shape = NA, outlier.alpha = 1e-5, outlier.color = "white") +
-    ggplot2::geom_jitter(shape = 22, alpha = .6, size = 3.5, color = "black",
-                         width = 0.2, height = 0) +
-    ggplot2::xlab("Serial Number") +
-    ggplot2::ylab(input$Variable) +
-    ggplot2::ggtitle(input$Lot) +
-    ggplot2::theme_bw() +
-    ggthemes::scale_fill_gdocs()
-
-  # KEY FIX: avoid ggplotly's internal merge that causes `fix.by`
-  plotly::ggplotly(p, originalData = FALSE, tooltip = c("sn","val","Inst"))
+  plotly::plot_ly(
+    data = dat,
+    x = ~sn, y = ~val, color = ~Inst,
+    type = "box",
+    boxpoints = "all",   # show the points on the same trace
+    jitter = 0.3,
+    pointpos = 0,
+    marker = list(size = 6, opacity = 0.6, line = list(width = 1)),
+    line   = list(width = 1)
+  ) %>%
+    plotly::layout(
+      title = list(text = input$Lot),
+      xaxis = list(title = "Serial Number"),
+      yaxis = list(title = input$Variable),
+      boxmode = "group",                   # group by Inst within each sn
+      legend = list(itemclick = "toggle", itemdoubleclick = "toggleothers")
+    )
 })
 }
