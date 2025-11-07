@@ -32,7 +32,7 @@ wetqc_lot_view_server <- function(input, output, session) {
 
   output$plot1 <- plotly::renderPlotly({
     dat <- selectedData()
-    ggplot2::ggplot(dat, ggplot2::aes(x = factor(sn), y = var)) +
+    ggplot2::ggplot(dat, ggplot2::aes(x = factor(sn), y = val)) +
       ggplot2::geom_boxplot(outlier.shape = NA, outlier.alpha = 1e-5, outlier.color = "white") +
       ggplot2::geom_jitter(shape = 22, alpha = .6, size = 3.5, color = "black",
                            ggplot2::aes(fill = Inst)) +
